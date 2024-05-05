@@ -1,39 +1,31 @@
 package com.melocode.lread;
-
 import java.sql.Connection;
-
 import java.sql.DriverManager;
 import java.sql.SQLException;
-public final class DBConnection {
-    private static boolean isDriverLoaded = false;
-    static{
-        try{
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            System.out.println("Driver Loaded");
-            isDriverLoaded = true;
-        }catch(ClassNotFoundException e){
+import java.sql.Statement;
+
+public class DBConnection {
+    static String user = "root";
+    static String password = "";
+    static String url = "jdbc:mysql://localhost/lumina?serverTimezone=Europe/Paris";
+
+    static String driver = "com.mysql.cj.jdbc.Driver";
+
+    public DBConnection() {
+    }
+
+    public static Connection getCon() {
+        Connection connection = null;
+        try {
+            Class.forName(driver);
+            connection = DriverManager.getConnection(url, user, password);
+            System.out.println("Connection succeeded.");
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+            System.out.println("Connection failed.");
         }
-    }
-
-    private final static String url="jdbc:mysql://localhost/lumina?serverTimezone=UTC";
-    private final static String user="SYSTEM";
-    private final static String password="system";
-
-    public static Connection getConnection() throws SQLException{
-        Connection con = null;
-        if(isDriverLoaded){
-            con  = DriverManager.getConnection(url,user,password);
-            System.out.println("Connection established");
-        }
-        return con;
+        return connection;
     }
 
 
-    public static void closeConnection(Connection con) throws SQLException{
-        if(con!=null){
-            con.close();
-            System.out.println("connection closed");
-        }
-    }
 }

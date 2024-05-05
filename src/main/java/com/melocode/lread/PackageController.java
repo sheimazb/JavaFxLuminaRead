@@ -3,63 +3,106 @@ package com.melocode.lread;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class PackageController {
-    public void fetchDataFromDatabase() {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+public class PackageController implements Initializable {
+    @FXML
+    private Text novellasText;
+    @FXML
+    private TableView<Package> TableView;
+
+    @FXML
+    private TableColumn<Package, Integer> idColumn;
+    @FXML
+    private TableColumn<Package, Integer> idUserColumn;
+
+    @FXML
+    private TableColumn<Package, String> titleColumn;
+
+    @FXML
+    private TableColumn<Package, String> descriptionColumn;
+
+    @FXML
+    private TableColumn<Package, String> categoryColumn;
+    @FXML
+    private TableColumn<Package, String> priceColumn;
+    @FXML
+    private TableColumn<Package, String> langueColumn;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        novellasText.setOnMouseClicked(event -> {
+            try {
+                // Charger la nouvelle page FXML
+                Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Fxml/test.fxml")));
+                Scene scene = new Scene(parent);
+                Stage stage = new Stage();
+                stage.setTitle("Novellas");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Gestion des erreurs de chargement de la nouvelle page FXML
+            }
+        });
+        showBooks();
+    }
+    public ObservableList<Package> getPackageList(){
+        ObservableList<Package> PackageList = FXCollections.observableArrayList();
+
+        DBConnection db =new DBConnection();
+
+        Connection connection = db.getCon();
+        String query = "SELECT * FROM packs ";
+        Statement st;
+        ResultSet rs;
 
         try {
-            conn = DBConnection.getConnection();
-            String query = "SELECT title, description, category, img, langue, price FROM pack";
-            pstmt = conn.prepareStatement(query);
-            rs = pstmt.executeQuery();
-
-            // Parcourir les résultats et faire quelque chose avec eux
-            while (rs.next()) {
-                // Récupérer les valeurs de chaque colonne dans la ligne actuelle
-                String title = rs.getString("title");
-                String description = rs.getString("description");
-                String category = rs.getString("category");
-                String img = rs.getString("img");
-                String langue = rs.getString("langue");
-                double price = rs.getDouble("price");
-
-                // Faites quelque chose avec les valeurs récupérées, comme les afficher dans la console ou les utiliser pour remplir des objets Java
-                System.out.println("Title: " + title);
-                System.out.println("Description: " + description);
-                System.out.println("Category: " + category);
-                System.out.println("Image: " + img);
-                System.out.println("Langue: " + langue);
-                System.out.println("Price: " + price);
-                System.out.println("-----------------------------------");
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            Package Package;
+            while(rs.next()) {
+                Package = new Package(rs.getInt("id"),
+                        rs.getInt("user_id"),
+                        rs.getString("title"),
+                        rs.getString("description"),
+                        rs.getString("category"),
+                        rs.getString("price"),
+                        rs.getString("langue"));
+                PackageList.add(Package);
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            // Fermez les ressources JDBC dans le bloc finally pour éviter les fuites de ressources
-            try {
-                if (rs != null) rs.close();
-                if (pstmt != null) pstmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
+        return PackageList;
+    }
+    public void showBooks() {
+        ObservableList<Package> list = getPackageList();
+
+        idColumn.setCellValueFactory(new PropertyValueFactory<Package,Integer>("id"));
+        idUserColumn.setCellValueFactory(new PropertyValueFactory<Package,Integer>("user_id"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<Package,String>("title"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<Package,String>("description"));
+        categoryColumn.setCellValueFactory(new PropertyValueFactory<Package,String>("category"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<Package,String>("price"));
+
+        TableView.setItems(list);
     }
 }
 

@@ -16,6 +16,7 @@ public class App extends Application {
         primaryStage.setTitle("Lumina Read");
         primaryStage.setScene(scene);
         primaryStage.show();
+
     }
 
     public static void main(String[] args) {

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="625.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fill="#f2f2f2" layoutX="277.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Novella" />
+      <Text fill="WHITE" layoutX="36.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" />
+      <Text fill="WHITE" layoutX="36.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+      <Text fill="WHITE" layoutX="36.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Content" />
+      <Label layoutX="82.0" layoutY="58.0" text="Value" />
+      <Label layoutX="112.0" layoutY="84.0" text="Value" />
+      <TextArea layoutX="36.0" layoutY="152.0" prefHeight="330.0" prefWidth="557.0" />
+   </children>
+</AnchorPane>
