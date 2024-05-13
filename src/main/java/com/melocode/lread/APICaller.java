@@ -1,13 +1,18 @@
 package com.melocode.lread;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
+import com.melocode.lread.models.Pack;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+
 public class APICaller {
     private final String userId;
     private final String title;
@@ -38,19 +43,20 @@ public class APICaller {
     }
 
     public static void main(String[] args) {
-
         try {
-            // Create URL
             HttpResponse<JsonNode> apiResponse = Unirest.get("http://127.0.0.1:8000/api/AllPack").asJson();
             String responseJsonAsString = apiResponse.getBody().toString();
 
-            APICaller dogResponse = new Gson().fromJson(apiResponse.getBody().toString(), APICaller.class);
+            // Convertir la réponse JSON en une liste d'objets Java
+            Type listType = new TypeToken<List<Pack>>(){}.getType();
+            List<Pack> packList = new Gson().fromJson(responseJsonAsString, listType);
 
-            System.out.println("Response Body: " + dogResponse.getUserId());
-            System.out.println("Response Body: " + dogResponse.getTitle());
-            System.out.println("Response Body: " + dogResponse.getId());
-            System.out.println("Response Body: " + responseJsonAsString);
-
+            // Parcourir la liste d'objets
+            for (Pack pack : packList) {
+                System.out.println("Image: " + pack.getImg());
+                System.out.println("description: " + pack.getDescription());
+                // Faites de même pour les autres propriétés que vous souhaitez récupérer
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
