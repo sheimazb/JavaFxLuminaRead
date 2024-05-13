@@ -40,7 +40,7 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </Text>
-            <Text fx:id="novellasText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Novellas" underline="true">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Novellas" underline="true">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -83,15 +83,15 @@
                </children>
             </VBox>
             <TableView fx:id="TableView" prefHeight="236.0" prefWidth="520.0">
-              <columns>
-                <TableColumn fx:id="idColumn" prefWidth="75.0" text="id" />
-                <TableColumn fx:id="idUserColumn"  prefWidth="75.0" text="user id" />
+               <columns>
+                  <TableColumn fx:id="idColumn" prefWidth="75.0" text="id" />
+                  <TableColumn fx:id="idUserColumn"  prefWidth="75.0" text="user id" />
                   <TableColumn fx:id="titleColumn" prefWidth="75.0" text="title" />
                   <TableColumn fx:id="descriptionColumn" prefWidth="75.0" text="description" />
                   <TableColumn fx:id="categoryColumn" prefWidth="75.0" text="category" />
                   <TableColumn fx:id="priceColumn" prefWidth="75.0" text="price" />
                   <TableColumn fx:id="langueColumn" prefWidth="75.0" text="langue" />
-              </columns>
+               </columns>
             </TableView>
          </children>
       </HBox>
