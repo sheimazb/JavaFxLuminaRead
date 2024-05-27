@@ -16,7 +16,7 @@ import java.util.Objects;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        try { Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Fxml/Package.fxml")));
+        try { Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Fxml/SignUp.fxml")));
             Scene scene =new Scene(parent);
             primaryStage.setTitle("Lumina Read");
             primaryStage.setScene(scene);
