@@ -17,4 +17,5 @@ module com.melocode.lread {
 
     opens com.melocode.lread to javafx.fxml;
     exports com.melocode.lread;
+    exports com.melocode.lread.controllers;
 }

@@ -1,9 +1,15 @@
 package com.melocode.lread.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -15,6 +21,12 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 public class SignInController {
+
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private Button signUpButton;
     @FXML
     private TextField tf_name;
 
@@ -59,6 +71,7 @@ public class SignInController {
             try (CloseableHttpResponse response = httpClient.execute(post)) {
                 int statusCode = response.getStatusLine().getStatusCode();
                 String responseString = EntityUtils.toString(response.getEntity());
+                goToLogin();
 
                 if (statusCode == 200) {
                     JSONObject jsonResponse = new JSONObject(responseString);
@@ -83,5 +96,35 @@ public class SignInController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void goToLogin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) tf_name.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "An error occurred while trying to load the login page: " + e.getMessage());
+        }
+    }
+    @FXML
+    private void handleLogin(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Login.fxml"));
+        Stage stage = (Stage) loginButton.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void handleSignUp(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/SignUp.fxml"));
+        Stage stage = (Stage) signUpButton.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
     }
 }
