@@ -44,6 +44,7 @@ public class App extends Application {
                     while ((inputLine = in.readLine()) != null) {
                         response.append(inputLine);
                     }
+
                     in.close();
 
                     // Print response
