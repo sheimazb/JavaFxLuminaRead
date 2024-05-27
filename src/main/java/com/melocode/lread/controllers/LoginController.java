@@ -21,8 +21,12 @@ import java.io.InputStreamReader;
 import org.json.JSONObject;
 
 public class LoginController {
+
     @FXML
     private Button loginButton;
+
+    @FXML
+    private Button marketButton;
 
     @FXML
     private Button signUpButton;
@@ -126,5 +130,13 @@ public class LoginController {
         Stage stage = (Stage) signUpButton.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+    }
+    @FXML
+    private void handleMarket(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/market.fxml"));
+        Stage stage = (Stage) marketButton.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
     }
 }
