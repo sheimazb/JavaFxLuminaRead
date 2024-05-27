@@ -76,18 +76,6 @@ public class SignUpController {
                 int statusCode = response.getStatusLine().getStatusCode();
                 String responseString = EntityUtils.toString(response.getEntity());
                 goToLogin();
-
-                if (statusCode == 200) {
-                    JSONObject jsonResponse = new JSONObject(responseString);
-                    if (jsonResponse.getBoolean("success")) {
-                        showAlert("Success", "Registration successful! Please check your email for verification.");
-                    } else {
-                        String message = jsonResponse.optString("message", "Registration failed.");
-                        showAlert("Error", message);
-                    }
-                } else {
-                    showAlert("Error", "Server returned status code: " + statusCode + ". Response: " + responseString);
-                }
             }
         } catch (IOException e) {
             showAlert("Error", "An error occurred: " + e.getMessage());
@@ -117,7 +105,7 @@ public class SignUpController {
     @FXML
     private void handleHome(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Home.fxml"));
-        Stage stage = (Stage) loginButton.getScene().getWindow();
+        Stage stage = (Stage) homeButton.getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
