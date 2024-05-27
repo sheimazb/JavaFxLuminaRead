@@ -20,13 +20,17 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-public class SignInController {
+public class SignUpController {
 
     @FXML
     private Button loginButton;
 
     @FXML
     private Button signUpButton;
+
+    @FXML
+    private Button homeButton;
+
     @FXML
     private TextField tf_name;
 
@@ -72,18 +76,6 @@ public class SignInController {
                 int statusCode = response.getStatusLine().getStatusCode();
                 String responseString = EntityUtils.toString(response.getEntity());
                 goToLogin();
-
-                if (statusCode == 200) {
-                    JSONObject jsonResponse = new JSONObject(responseString);
-                    if (jsonResponse.getBoolean("success")) {
-                        showAlert("Success", "Registration successful! Please check your email for verification.");
-                    } else {
-                        String message = jsonResponse.optString("message", "Registration failed.");
-                        showAlert("Error", message);
-                    }
-                } else {
-                    showAlert("Error", "Server returned status code: " + statusCode + ". Response: " + responseString);
-                }
             }
         } catch (IOException e) {
             showAlert("Error", "An error occurred: " + e.getMessage());
@@ -109,6 +101,14 @@ public class SignInController {
             e.printStackTrace();
             showAlert("Error", "An error occurred while trying to load the login page: " + e.getMessage());
         }
+    }
+    @FXML
+    private void handleHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Home.fxml"));
+        Stage stage = (Stage) homeButton.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML
     private void handleLogin(ActionEvent event) throws IOException {

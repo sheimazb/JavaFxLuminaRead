@@ -1,39 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.melocode.lread.controllers.HomeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.melocode.lread.controllers.LoginController">
 
     <children>
-        <HBox prefHeight="42.0" prefWidth="600.0">
+        <!-- HBox -->
+        <HBox prefHeight="42.0" prefWidth="600.0" AnchorPane.topAnchor="0.0">
             <children>
                 <ButtonBar prefHeight="12.0" prefWidth="150.0">
                     <buttons>
-                        <Label styleClass="text" text="Lumina Read Pi" />
+                        <Button text="Lumina Read Pi" />
                     </buttons>
                 </ButtonBar>
                 <ButtonBar prefHeight="42.0" prefWidth="260.0">
                 </ButtonBar>
                 <ButtonBar prefHeight="42.0" prefWidth="155.0">
                     <buttons>
-                        <Button fx:id="loginButton" onAction="#handleLogin" mnemonicParsing="false" text="Login" />
-                        <Button fx:id="signUpButton" onAction="#handleSignUp" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="SignUp" />
+                        <Button fx:id="loginButton" onAction="#handleLogin" text="Login" />
+                        <Button fx:id="signUpButton" onAction="#handleSignUp" prefHeight="25.0" prefWidth="93.0" text="SignUp" />
                     </buttons>
                 </ButtonBar>
             </children>
         </HBox>
-        <VBox alignment="CENTER" prefHeight="300.0" prefWidth="600.0">
+
+        <VBox alignment="CENTER" prefHeight="350.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0">
             <children>
-                <VBox styleClass="center-box" alignment="CENTER" spacing="10">
-                    <children>
-                        <Label styleClass="header1" text="Welcome to Lumina Read Pi" />
-                        <Label styleClass="description" text="Publish your own stories and connect with a community of readers and writers." wrapText="true" textAlignment="CENTER" prefWidth="355.0" />
-                        <Button text="Explore Now" />
-                    </children>
+                <VBox alignment="CENTER" prefHeight="220.0" prefWidth="600.0" spacing="10" styleClass="center-box">
+                    <Label styleClass="header1" text="Welcome to Lumina Read Pi" />
+                    <Label prefWidth="355.0" styleClass="description" text="Publish your own stories and connect with a community of readers and writers." textAlignment="CENTER" wrapText="true" />
+                    <Button text="Explore Now" />
                 </VBox>
             </children>
         </VBox>

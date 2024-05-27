@@ -5,64 +5,71 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.melocode.lread.controllers.SignInController">
-    <children>
-        <HBox prefHeight="42.0" prefWidth="600.0">
-            <children>
-                <ButtonBar prefHeight="12.0" prefWidth="150.0">
-                    <buttons>
-                        <Label styleClass="text" text="Lumina Read Pi" />
-                    </buttons>
-                </ButtonBar>
-                <ButtonBar prefHeight="42.0" prefWidth="260.0">
-                </ButtonBar>
-                <ButtonBar prefHeight="42.0" prefWidth="155.0">
-                    <buttons>
-                        <Button mnemonicParsing="false" onAction="#handleLogin" text="Login" />
-                        <Button mnemonicParsing="false" onAction="#handleSignUp" prefHeight="25.0" prefWidth="93.0" text="SignUp" />
-                    </buttons>
-                </ButtonBar>
-            </children>
-        </HBox>
-        <Text fill="#868686" layoutX="123.0" layoutY="768.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have already an account?" />
-        <Hyperlink fx:id="link_to_login" layoutX="283.0" layoutY="747.0" styleClass="description" text="login">
-            <font>
-                <Font size="6.0" />
-            </font>
-        </Hyperlink>
-        <Text fill="WHITE" layoutX="112.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back">
-            <font>
-                <Font name="System Bold" size="24.0" />
-            </font>
-        </Text>
-        <Text fill="#868686" layoutX="112.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back! Please enter your details" />
-        <Label layoutX="110.0" layoutY="277.0" text="First and last name" textFill="#f2f2f2">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Label>
-        <TextField fx:id="tf_name" layoutX="110.0" layoutY="304.0" prefHeight="30.0" prefWidth="220.0" promptText="Enter your name" style="-fx-background-radius: 0;" />
-        <Label layoutX="110.0" layoutY="350.0" text="Email" textFill="WHITE" />
-        <TextField fx:id="tf_email" layoutX="110.0" layoutY="374.0" prefHeight="30.0" prefWidth="220.0" promptText="Enter your email" style="-fx-background-radius: 0;" />
-        <Label layoutX="110.0" layoutY="423.0" text="Password" textFill="WHITE">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Label>
-        <PasswordField fx:id="tf_password" layoutX="110.0" layoutY="450.0" prefHeight="30.0" prefWidth="220.0" promptText="Enter your password" style="-fx-background-radius: 0;" />
-        <Label layoutX="110.0" layoutY="495.0" text="Confirm password" textFill="WHITE">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Label>
-        <PasswordField fx:id="tf_comfirmpassword" layoutX="110.0" layoutY="522.0" prefHeight="30.0" prefWidth="220.0" promptText="Enter your password" style="-fx-background-radius: 0;" />
-        <Button fx:id="btn_insert" layoutX="110.0" layoutY="574.0" mnemonicParsing="false" onAction="#addUser" prefHeight="30.0" prefWidth="220.0" text="Sign Up" textFill="WHITE">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-        </Button>
-    </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style/global.css"
+            xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.melocode.lread.controllers.SignUpController">
+    <HBox prefHeight="42.0" prefWidth="600.0">
+        <ButtonBar prefHeight="12.0" prefWidth="150.0">
+            <buttons>
+                <Button fx:id="homeButton" onAction="#handleHome" text="Lumina Read Pi"/>
+            </buttons>
+        </ButtonBar>
+        <ButtonBar prefHeight="42.0" prefWidth="260.0">
+        </ButtonBar>
+        <ButtonBar prefHeight="42.0" prefWidth="155.0">
+            <buttons>
+                <Button fx:id="loginButton" onAction="#handleLogin" text="Login"/>
+                <Button fx:id="signUpButton" onAction="#handleSignUp" prefHeight="25.0" prefWidth="93.0"
+                        text="SignUp"/>
+            </buttons>
+        </ButtonBar>
+    </HBox>
+    <Text fill="#868686" layoutX="123.0" layoutY="768.0" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="You have already an account?"/>
+    <Hyperlink fx:id="link_to_login" layoutX="283.0" layoutY="747.0" styleClass="description" text="login">
+        <font>
+            <Font size="6.0"/>
+        </font>
+    </Hyperlink>
+    <Text fill="WHITE" layoutX="112.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back">
+        <font>
+            <Font name="System Bold" size="24.0"/>
+        </font>
+    </Text>
+    <Text fill="#868686" layoutX="112.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="Welcome back! Please enter your details"/>
+    <Label layoutX="110.0" layoutY="277.0" text="First and last name" textFill="#f2f2f2">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </Label>
+    <TextField fx:id="tf_name" layoutX="110.0" layoutY="304.0" prefHeight="30.0" prefWidth="220.0"
+               promptText="Enter your name" style="-fx-background-radius: 0;"/>
+    <Label layoutX="110.0" layoutY="350.0" text="Email" textFill="WHITE"/>
+    <TextField fx:id="tf_email" layoutX="110.0" layoutY="374.0" prefHeight="30.0" prefWidth="220.0"
+               promptText="Enter your email" style="-fx-background-radius: 0;"/>
+    <Label layoutX="110.0" layoutY="423.0" text="Password" textFill="WHITE">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </Label>
+    <PasswordField fx:id="tf_password" layoutX="110.0" layoutY="450.0" prefHeight="30.0" prefWidth="220.0"
+                   promptText="Enter your password" style="-fx-background-radius: 0;"/>
+    <Label layoutX="110.0" layoutY="495.0" text="Confirm password" textFill="WHITE">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </Label>
+    <PasswordField fx:id="tf_comfirmpassword" layoutX="110.0" layoutY="522.0" prefHeight="30.0" prefWidth="220.0"
+                   promptText="Enter your password" style="-fx-background-radius: 0;"/>
+    <Button fx:id="btn_insert" layoutX="110.0" layoutY="574.0" mnemonicParsing="false" onAction="#addUser"
+            prefHeight="30.0" prefWidth="220.0" text="Sign Up" textFill="WHITE">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
 </AnchorPane>
