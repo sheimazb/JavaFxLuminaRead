@@ -6,10 +6,16 @@ import com.melocode.lread.models.Novella;
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.scene.input.MouseEvent;
@@ -26,10 +32,16 @@ public class PacksTestController {
 
     @FXML
     private ListView<Pack> packsListView;
+    @FXML
+    private ImageView headerImage;
 
     @FXML
     public void initialize() {
         List<Pack> packs = APICaller.fetchPacksFromAPI();
+        headerImage.setImage(new Image("https://i.gyazo.com/706a645ba061f1a126897be47f21667c.png"));
+        headerImage.setFitWidth(850);
+        headerImage.setFitHeight(150);
+
         if (packs != null) {
             packsListView.getItems().addAll(packs);
             packsListView.setCellFactory(new Callback<>() {
@@ -40,18 +52,53 @@ public class PacksTestController {
                         protected void updateItem(Pack pack, boolean empty) {
                             super.updateItem(pack, empty);
                             if (empty || pack == null) {
+                                setGraphic(null);
                                 setText(null);
                             } else {
-                                setText("Image: " + pack.getImg() + "\ndescription: " + pack.getDescription());
+                                // Créer l'image view
+                                ImageView imageView = new ImageView();
+                                imageView.setFitWidth(100); // Définissez la largeur souhaitée de l'image
+                                imageView.setFitHeight(100); // Définissez la hauteur souhaitée de l'image
+
+                                // Charger l'image à partir du chemin fourni par pack.getImg()
+                                Image image = new Image(pack.getImg());
+                                imageView.setImage(image);
+
+                                // Créez le texte de la description
+
+                                String description = "Description: " + pack.getDescription();
+                                if (description.length() > 50) {
+                                    // Si la description est trop longue, la diviser en plusieurs lignes
+                                    setText(description.substring(0, 50) + "\n" + description.substring(50));
+                                } else {
+                                    setText(description);
+                                }
+
+                                // Créez le bouton "Show"
+                                Button showButton = new Button("Show");
+                                showButton.setOnAction(event -> {
+                                    Novella novella = fetchNovellaById(pack.getId());
+                                    if (novella != null) {
+                                        showNovellaDetails(novella);
+                                    }
+                                });
+
+                                // Créez une VBox pour organiser l'image, le texte et le bouton verticalement
+                                VBox vBox = new VBox(10);
+                                vBox.getChildren().addAll(imageView, showButton); // Ajoutez l'image, le texte et le bouton à la VBox
+                                setGraphic(vBox);
                             }
                         }
+
                     };
                 }
             });
+           
 
-            packsListView.setOnMouseClicked(this::handlePackClick);
         }
     }
+
+
 
     private void handlePackClick(MouseEvent event) {
         Pack selectedPack = packsListView.getSelectionModel().getSelectedItem();
@@ -108,4 +155,5 @@ public class PacksTestController {
             e.printStackTrace();
         }
     }
+
 }
