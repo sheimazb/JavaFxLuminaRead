@@ -48,6 +48,7 @@ public class APICaller {
             String responseJsonAsString = apiResponse.getBody().toString();
 
             // Convertir la réponse JSON en une liste d'objets Java
+            // Convertir la réponse JSON en une liste d'objets Java
             Type listType = new TypeToken<List<Pack>>(){}.getType();
             List<Pack> packList = new Gson().fromJson(responseJsonAsString, listType);
 
