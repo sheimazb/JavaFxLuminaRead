@@ -54,6 +54,7 @@ public class PacksTestController {
                             if (empty || pack == null) {
                                 setGraphic(null);
                                 setText(null);
+                                setStyle("-fx-background-color: transparent;");
                             } else {
                                 // Créer l'image view
                                 ImageView imageView = new ImageView();
@@ -65,7 +66,6 @@ public class PacksTestController {
                                 imageView.setImage(image);
 
                                 // Créez le texte de la description
-
                                 String description = "Description: " + pack.getDescription();
                                 if (description.length() > 50) {
                                     // Si la description est trop longue, la diviser en plusieurs lignes
@@ -87,13 +87,19 @@ public class PacksTestController {
                                 VBox vBox = new VBox(10);
                                 vBox.getChildren().addAll(imageView, showButton); // Ajoutez l'image, le texte et le bouton à la VBox
                                 setGraphic(vBox);
+
+                                // Appliquer un arrière-plan à cet élément
+                                setStyle("-fx-background-color: #1b202d;-fx-padding:10;");
+                                setTextFill(javafx.scene.paint.Color.WHITE);
+
                             }
                         }
+
 
                     };
                 }
             });
-           
+
 
         }
     }

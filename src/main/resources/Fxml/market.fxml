@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<VBox style="-fx-background-color: #1b202d;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.melocode.lread.controllers.PacksTestController">
+   <stylesheets>
+      <URL value="@style/global.css" />
+   </stylesheets>
+   <ImageView fx:id="headerImage" />
+   <ListView fx:id="packsListView" editable="true" style="-fx-background-color: #1b202d;"/>
+
+
+ </VBox>
