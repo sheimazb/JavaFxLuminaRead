@@ -20,13 +20,17 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-public class SignInController {
+public class SignUpController {
 
     @FXML
     private Button loginButton;
 
     @FXML
     private Button signUpButton;
+
+    @FXML
+    private Button homeButton;
+
     @FXML
     private TextField tf_name;
 
@@ -109,6 +113,14 @@ public class SignInController {
             e.printStackTrace();
             showAlert("Error", "An error occurred while trying to load the login page: " + e.getMessage());
         }
+    }
+    @FXML
+    private void handleHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Home.fxml"));
+        Stage stage = (Stage) loginButton.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML
     private void handleLogin(ActionEvent event) throws IOException {

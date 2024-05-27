@@ -12,39 +12,40 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"  stylesheets="@style/global.css"
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style/global.css"
             xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.melocode.lread.controllers.LoginController">
-    <children>
-        <HBox prefHeight="42.0" prefWidth="600.0">
-            <children>
-                <ButtonBar prefHeight="12.0" prefWidth="150.0">
-                    <buttons>
-                        <Label styleClass="text" text="Lumina Read Pi" />
-                    </buttons>
-                </ButtonBar>
-                <ButtonBar prefHeight="42.0" prefWidth="260.0">
-                </ButtonBar>
-                <ButtonBar prefHeight="42.0" prefWidth="155.0">
-                    <buttons>
-                        <Button fx:id="loginButton" onAction="#handleLogin" mnemonicParsing="false" text="Login" />
-                        <Button fx:id="signUpButton" onAction="#handleSignUp" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="SignUp" />
-                    </buttons>
-                </ButtonBar>
-            </children>
-        </HBox>
-        <Text  fill="#ffffff" layoutX="200.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" styleClass="header1"  />
+    <HBox prefHeight="42.0" prefWidth="600.0">
+        <ButtonBar prefHeight="12.0" prefWidth="150.0">
+            <buttons>
+                <Button fx:id="homeButton" onAction="#handleHome" text="Lumina Read Pi"/>
+            </buttons>
+        </ButtonBar>
+        <ButtonBar prefHeight="42.0" prefWidth="260.0">
+        </ButtonBar>
+        <ButtonBar prefHeight="42.0" prefWidth="155.0">
+            <buttons>
+                <Button fx:id="loginButton" onAction="#handleLogin" mnemonicParsing="false" text="Login"/>
+                <Button fx:id="signUpButton" onAction="#handleSignUp" mnemonicParsing="false" prefHeight="25.0"
+                        prefWidth="93.0" text="SignUp"/>
+            </buttons>
+        </ButtonBar>
+    </HBox>
+    <Text fill="#ffffff" layoutX="200.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login"
+          styleClass="header1"/>
 
-        <TextField fx:id="tf_email" layoutX="200.0" layoutY="150.0" prefHeight="30.0" prefWidth="200.0" promptText="Enter your email" />
-        <PasswordField fx:id="tf_password" layoutX="200.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0" promptText="Enter your password" />
-        <Button fx:id="btn_login" layoutX="200.0" layoutY="250.0" mnemonicParsing="false" onAction="#loginUser" prefHeight="30.0" prefWidth="200.0" text="Login" textFill="WHITE">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-        </Button>
-    </children>
+    <TextField fx:id="tf_email" layoutX="200.0" layoutY="150.0" prefHeight="30.0" prefWidth="200.0"
+               promptText="Enter your email"/>
+    <PasswordField fx:id="tf_password" layoutX="200.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0"
+                   promptText="Enter your password"/>
+    <Button fx:id="btn_login" layoutX="200.0" layoutY="250.0" mnemonicParsing="false" onAction="#loginUser"
+            prefHeight="30.0" prefWidth="200.0" text="Login" textFill="WHITE">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
 </AnchorPane>

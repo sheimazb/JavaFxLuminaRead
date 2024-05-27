@@ -32,7 +32,7 @@ public class HomeController {
         Stage stage = (Stage) signUpButton.getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.show();
+
     }
 
 }
