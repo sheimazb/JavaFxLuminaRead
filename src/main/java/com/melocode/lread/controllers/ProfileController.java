@@ -39,7 +39,7 @@ public class ProfileController {
         backgroundImage.setImage(new Image("https://i.gyazo.com/706a645ba061f1a126897be47f21667c.png"));
 
         DBConnection dbConnection = new DBConnection();
-        User user = dbConnection.getUserProfile(2);
+        User user = dbConnection.getUserProfile(6);
         if (user != null) {
             userName.setText(user.getName());
             userDescription.setText(user.getDescription());
@@ -48,7 +48,7 @@ public class ProfileController {
             }
         }
 
-        List<Pack> packs = dbConnection.getPacksForUser(2);
+        List<Pack> packs = dbConnection.getPacksForUser(6);
         if (packs != null && !packs.isEmpty()) {
             int packsPerRow = 3;
 

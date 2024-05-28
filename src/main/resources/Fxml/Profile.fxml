@@ -9,7 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
+<?import java.net.URL?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.melocode.lread.controllers.ProfileController" style="-fx-background-color: black;">
+
     <top>
         <VBox alignment="CENTER" spacing="20">
             <StackPane>
