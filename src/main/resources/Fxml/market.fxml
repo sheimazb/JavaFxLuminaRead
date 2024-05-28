@@ -12,6 +12,4 @@
    </stylesheets>
    <ImageView fx:id="headerImage" />
    <ListView fx:id="packsListView" editable="true" style="-fx-background-color: #1b202d;"/>
-
-
  </VBox>

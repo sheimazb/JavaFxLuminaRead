@@ -2,9 +2,14 @@
 .root {
     -fx-background-color: #1b202d;
 }
+*{
+ -fx-background-color: #1b202d;
+  -fx-text-fill: white;
+  -fx-padding: 5px ;
+}
 
 .button {
-    -fx-background-color: #2c303c;
+    -fx-background-color: #27918c;
     -fx-text-fill: white;
     -fx-font-size: 12px;
     -fx-padding: 3px 7px;

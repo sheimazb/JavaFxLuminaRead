@@ -1,5 +1,7 @@
 package com.melocode.lread;
 
+import java.util.List;
+
 public class Novella {
     private int id;
     private int pack_id;
@@ -8,15 +10,16 @@ public class Novella {
     private String img;
     private String content;
     private String progress;
-    public Novella (int id, int pack_id, String title, String description, String  img ,String content,String progress ){
-        this.id=id;
-        this.pack_id=pack_id;
-        this.title=title;
-        this.description=description;
-        this.img=img;
-        this.content=content;
-        this.progress=progress;
-    };
+
+    public Novella(int id, int pack_id, String title, String description, String img, String content, String progress) {
+        this.id = id;
+        this.pack_id = pack_id;
+        this.title = title;
+        this.description = description;
+        this.img = img;
+        this.content = content;
+        this.progress = progress;
+    }
 
     public int getId() {
         return id;

@@ -35,8 +35,6 @@ public class APICaller extends Application {
         try {
             HttpResponse<JsonNode> apiResponse = Unirest.get("http://127.0.0.1:8000/api/AllPack").asJson();
             String responseJsonAsString = apiResponse.getBody().toString();
-
-            // Convert JSON response to a list of Java objects
             Type listType = new TypeToken<List<Pack>>(){}.getType();
             return new Gson().fromJson(responseJsonAsString, listType);
         } catch (Exception e) {
