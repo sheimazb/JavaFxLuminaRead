@@ -5,6 +5,22 @@
 <?import javafx.scene.layout.*?>
 
 <VBox style="-fx-background-color: #1b202d;" stylesheets="@style/global.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.melocode.lread.controllers.MarketPlaceController">
+   <HBox prefHeight="42.0" prefWidth="600.0" spacing="10.0">
+      <ButtonBar prefHeight="12.0" prefWidth="150.0">
+         <buttons>
+            <Button fx:id="homeButton" onAction="#handleHome" text="Lumina Read Pi"/>
+         </buttons>
+      </ButtonBar>
+
+      <Pane HBox.hgrow="ALWAYS"></Pane>
+
+      <ButtonBar prefHeight="42.0" prefWidth="155.0">
+         <buttons>
+            <Button fx:id="marketButton" onAction="#handleMarket" text="Market Place"/>
+            <Button fx:id="loginButton" onAction="#handleProfile" text="Profile"/>
+         </buttons>
+      </ButtonBar>
+   </HBox>
    <ImageView fx:id="headerImage" />
    <ListView fx:id="packsListView" editable="true" style="-fx-background-color: #1b202d;" />
 </VBox>

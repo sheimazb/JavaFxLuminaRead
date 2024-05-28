@@ -158,8 +158,8 @@ public class MarketPlaceController {
         stage.show();
     }
     @FXML
-    private void handleLogin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Login.fxml"));
+    private void handleProfile(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Profile.fxml"));
         Stage stage = (Stage) loginButton.getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
