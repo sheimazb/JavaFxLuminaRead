@@ -4,7 +4,11 @@ import com.melocode.lread.APICaller;
 import com.melocode.lread.models.Pack;
 import com.melocode.lread.models.Novella;
 import com.google.gson.Gson;
+
 import com.google.gson.reflect.TypeToken;
+
+import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,7 +31,20 @@ import java.net.URL;
 import java.util.List;
 import java.util.Objects;
 
-public class PacksTestController {
+public class MarketPlaceController {
+
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private Button signUpButton;
+
+    @FXML
+    private Button homeButton;
+
+    @FXML
+    private Button marketButton;
+
 
     @FXML
     private ListView<Pack> packsListView;
@@ -131,4 +148,39 @@ public class PacksTestController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void handleHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Home.fxml"));
+        Stage stage = (Stage) homeButton.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    private void handleLogin(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Login.fxml"));
+        Stage stage = (Stage) loginButton.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void handleSignUp(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/SignUp.fxml"));
+        Stage stage = (Stage) signUpButton.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+    @FXML
+    private void handleMarket(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/market.fxml"));
+        Stage stage = (Stage) marketButton.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
 }

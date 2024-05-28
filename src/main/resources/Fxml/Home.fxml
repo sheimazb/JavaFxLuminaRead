@@ -7,23 +7,24 @@
 
     <children>
         <!-- HBox -->
-        <HBox prefHeight="42.0" prefWidth="600.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <ButtonBar prefHeight="12.0" prefWidth="150.0">
-                    <buttons>
-                        <Button text="Lumina Read Pi" />
-                    </buttons>
-                </ButtonBar>
-                <ButtonBar prefHeight="42.0" prefWidth="260.0">
-                </ButtonBar>
-                <ButtonBar prefHeight="42.0" prefWidth="155.0">
-                    <buttons>
-                        <Button fx:id="loginButton" onAction="#handleLogin" text="Login" />
-                        <Button fx:id="signUpButton" onAction="#handleSignUp" prefHeight="25.0" prefWidth="93.0" text="SignUp" />
-                    </buttons>
-                </ButtonBar>
-            </children>
+        <HBox prefHeight="42.0" prefWidth="600.0" spacing="10.0">
+            <ButtonBar prefHeight="12.0" prefWidth="150.0">
+                <buttons>
+                    <Button fx:id="homeButton" onAction="#handleHome" text="Lumina Read Pi"/>
+                </buttons>
+            </ButtonBar>
+
+            <Pane HBox.hgrow="ALWAYS"></Pane>
+
+            <ButtonBar prefHeight="42.0" prefWidth="155.0">
+                <buttons>
+                    <Button fx:id="marketButton" onAction="#handleMarket" text="Market Place"/>
+                    <Button fx:id="loginButton" onAction="#handleLogin" text="Login"/>
+                    <Button fx:id="signUpButton" onAction="#handleSignUp" prefHeight="25.0" prefWidth="93.0" text="SignUp"/>
+                </buttons>
+            </ButtonBar>
         </HBox>
+
 
         <VBox alignment="CENTER" prefHeight="350.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0">
             <children>
