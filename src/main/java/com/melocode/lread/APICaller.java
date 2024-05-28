@@ -26,7 +26,7 @@ public class APICaller extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Fxml/Profile.fxml")));
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Fxml/")));
         Scene scene = new Scene(parent);
         primaryStage.setTitle("Pack List");
         primaryStage.setScene(scene);

@@ -48,7 +48,7 @@ public class ProfileController {
             }
         }
 
-        List<Pack> packs = dbConnection.getPacksForUser(2); 
+        List<Pack> packs = dbConnection.getPacksForUser(2);
         if (packs != null && !packs.isEmpty()) {
             int packsPerRow = 3;
 
