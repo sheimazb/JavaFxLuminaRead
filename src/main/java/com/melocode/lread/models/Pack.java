@@ -1,7 +1,7 @@
 package com.melocode.lread.models;
 
 public class Pack {
-    private String img;
+    public String img;
     private String updated_at;
     private User usser;
     private int user_id;

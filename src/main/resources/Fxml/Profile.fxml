@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.melocode.lread.controllers.ProfileController" style="-fx-background-color: black;">
+    <top>
+        <VBox alignment="CENTER" spacing="20">
+            <StackPane>
+                <ImageView fx:id="backgroundImage" fitHeight="200" fitWidth="600" preserveRatio="false" />
+                <VBox alignment="CENTER" spacing="10">
+                    <ImageView fx:id="userImage" fitHeight="100" fitWidth="100">
+                        <clip>
+                            <Circle centerX="50" centerY="50" radius="50" />
+                        </clip>
+                    </ImageView>
+                    <Label fx:id="userName" style="-fx-text-fill: white;" />
+                    <Label fx:id="userDescription" style="-fx-text-fill: white;" />
+                </VBox>
+            </StackPane>
+        </VBox>
+    </top>
+    <center>
+        <ScrollPane fx:id="scrollPane" fitToWidth="true" fitToHeight="true">
+            <VBox fx:id="packListContainer" spacing="20" style="-fx-padding: 20;" />
+        </ScrollPane>
+    </center>
+</BorderPane>
