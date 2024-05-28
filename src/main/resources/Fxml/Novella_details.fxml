@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.melocode.lread.controllers.NovellaDetailsController">
-    <Label fx:id="titleLabel"/>
-    <Label fx:id="authorLabel"/>
-    <Label fx:id="summaryTextArea"/>
-    <ImageView fx:id="novellaImageView"/>
-</VBox>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ScrollPane?>
+
+<ScrollPane fx:id="scrollPane" stylesheets="@style/global.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.melocode.lread.controllers.NovellaDetailsController">
+    <content>
+        <VBox fx:id="novellasContainer" spacing="10" />
+    </content>
+</ScrollPane>
