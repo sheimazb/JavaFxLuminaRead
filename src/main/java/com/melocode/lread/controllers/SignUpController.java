@@ -23,6 +23,9 @@ import java.io.IOException;
 public class SignUpController {
 
     @FXML
+    private Button marketButton;
+    
+    @FXML
     private Button loginButton;
 
     @FXML
@@ -123,6 +126,14 @@ public class SignUpController {
     private void handleSignUp(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Fxml/SignUp.fxml"));
         Stage stage = (Stage) signUpButton.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+    @FXML
+    private void handleMarket(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/market.fxml"));
+        Stage stage = (Stage) marketButton.getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
