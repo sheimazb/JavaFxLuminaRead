@@ -33,7 +33,7 @@ public class APICaller extends Application {
 
     public static List<Pack> fetchPacksFromAPI() {
         try {
-            HttpResponse<JsonNode> apiResponse = Unirest.get("http://127.0.0.1:8000/api/AllPack").asJson();
+            HttpResponse<JsonNode> apiResponse = Unirest.get("http://127.0.0.1:8000/api/AllPackDesk").asJson();
             String responseJsonAsString = apiResponse.getBody().toString();
             Type listType = new TypeToken<List<Pack>>(){}.getType();
             return new Gson().fromJson(responseJsonAsString, listType);
