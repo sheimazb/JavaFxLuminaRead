@@ -19,6 +19,7 @@ import java.io.OutputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import org.json.JSONObject;
+import javafx.concurrent.Task;
 
 public class LoginController {
 
@@ -48,46 +49,55 @@ public class LoginController {
         String email = tf_email.getText();
         String password = tf_password.getText();
 
-        try {
-            JSONObject jsonBody = new JSONObject();
-            jsonBody.put("email", email);
-            jsonBody.put("password", password);
+        navigateToHome();  // Navigate to home immediately after login button click
 
-            URL url = new URL("http://127.0.0.1:8000/api/login");
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Content-Type", "application/json");
-            connection.setDoOutput(true);
+        Task<Void> loginTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                try {
+                    JSONObject jsonBody = new JSONObject();
+                    jsonBody.put("email", email);
+                    jsonBody.put("password", password);
 
-            OutputStream os = connection.getOutputStream();
-            os.write(jsonBody.toString().getBytes());
-            os.flush();
-            os.close();
-            goToHome();
-            int responseCode = connection.getResponseCode();
+                    URL url = new URL("http://127.0.0.1:8000/api/login");
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("POST");
+                    connection.setRequestProperty("Content-Type", "application/json");
+                    connection.setDoOutput(true);
 
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                String inputLine;
+                    try (OutputStream os = connection.getOutputStream()) {
+                        os.write(jsonBody.toString().getBytes());
+                        os.flush();
+                    }
 
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
+                    int responseCode = connection.getResponseCode();
+
+                    if (responseCode == HttpURLConnection.HTTP_OK) {
+                        StringBuilder response = new StringBuilder();
+                        try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                            String inputLine;
+                            while ((inputLine = in.readLine()) != null) {
+                                response.append(inputLine);
+                            }
+                        }
+
+                        // Successfully logged in, you can update the UI or state if needed
+                    } else {
+                        showAlert(AlertType.ERROR, "Error", null, "HTTP error code: " + responseCode);
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    showAlert(AlertType.ERROR, "Error", null, "An error occurred while processing your request: " + e.getMessage());
                 }
-                in.close();
-
-                goToHome();
-            } else {
-                showAlert(AlertType.ERROR, "Error", null, "HTTP error code: " + responseCode);
+                return null;
             }
+        };
 
-            connection.disconnect();
-        } catch (IOException e) {
-            e.printStackTrace();
-            showAlert(AlertType.ERROR, "Error", null, "An error occurred while processing your request: " + e.getMessage());
-        }
+        new Thread(loginTask).start();
     }
-    private void goToHome() {
+
+    private void navigateToHome() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/HomePage.fxml"));
             Parent root = loader.load();
@@ -96,7 +106,7 @@ public class LoginController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            showAlert(AlertType.ERROR,"Error",null, "An error occurred while trying to load the login page: " + e.getMessage());
+            showAlert(AlertType.ERROR, "Error", null, "An error occurred while trying to load the home page: " + e.getMessage());
         }
     }
 
@@ -110,7 +120,7 @@ public class LoginController {
 
     @FXML
     private void handleHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/market.fxml"));
         Stage stage = (Stage) homeButton.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
@@ -131,12 +141,13 @@ public class LoginController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
     @FXML
     private void handleMarket(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Fxml/market.fxml"));
         Stage stage = (Stage) marketButton.getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-
+        stage.show();
     }
 }
